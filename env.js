@@ -1,4 +1,4 @@
 window.ENV = window.ENV || {
-	SUPABASE_URL: "https://SEU-PROJETO.supabase.co",
-	SUPABASE_ANON_KEY: "SUA_ANON_PUBLIC_KEY",
+	SUPABASE_URL: "https://ktigxtnosdarbcvckwcm.supabase.co",
+	SUPABASE_ANON_KEY: "sb_publishable_68-8pXq5lhvY_BHscBfpuA_GAv0R60j",
 };
