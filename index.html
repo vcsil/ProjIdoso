@@ -1,0 +1,1689 @@
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Avaliação Geriátrica Ampla (AGA)</title>
+
+		<link rel="stylesheet" href="reset.css" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<main>
+			<form id="agaForm" class="paper" autocomplete="off">
+				<!-- HEADER -->
+				<header class="topbar">
+					<div class="brand">
+						<div class="brand-mark">SBG</div>
+						<div class="brand-text">
+							<div class="t1">Sociedade Brasileira de</div>
+							<div class="t2">Geriatria e Gerontologia</div>
+						</div>
+					</div>
+					<div class="title">Avaliação Geriátrica Ampla (AGA)</div>
+					<div class="actions">
+						<button type="button" class="btn primary" id="btnSave">
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path d="M5 4h11l3 3v13H5z" />
+								<path d="M8 4v5h7V4" />
+								<path d="M8 14h8v6H8z" />
+							</svg>
+							<span class="label-desktop">Salvar avaliação</span>
+							<span class="label-mobile">Salvar</span>
+						</button>
+						<button type="button" class="btn" id="btnClear">
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path d="M3 6h18" />
+								<path d="M8 6V4h8v2" />
+								<path d="M6 6l1 14h10l1-14" />
+							</svg>
+							Limpar
+						</button>
+					</div>
+				</header>
+
+				<!-- IDENTIFICAÇÃO -->
+				<div class="ident">
+					<div class="cell">
+						<label class="k" for="nome">Nome:</label>
+						<input
+							type="text"
+							id="nome"
+							name="nome"
+							placeholder="Informe o nome completo do paciente"
+						/>
+					</div>
+					<div class="cell">
+						<label class="k" for="idade">Idade:</label>
+						<input
+							type="text"
+							id="idade"
+							name="idade"
+							class="short"
+							placeholder="___"
+						/>
+						<span style="color: var(--muted); font-size: 12px"
+							>anos</span
+						>
+					</div>
+					<div class="cell sex">
+						<span class="k">Sexo:</span>
+						<label class="rd"
+							><input type="radio" name="sexo" value="F" />
+							Fem</label
+						>
+						<label class="rd"
+							><input type="radio" name="sexo" value="M" />
+							Masc</label
+						>
+					</div>
+				</div>
+
+				<!-- BLOCOS 2-9 -->
+				<div class="grid4">
+					<!-- Escolaridade -->
+					<div class="box">
+						<h3>Escolaridade</h3>
+						<div class="opts">
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="escolaridade"
+									value="Analfabeto"
+								/>
+								Analfabeto</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="escolaridade"
+									value="1-4"
+								/>
+								1–4 anos</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="escolaridade"
+									value="5-8"
+								/>
+								5–8 anos</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="escolaridade"
+									value=">8"
+								/>
+								&gt; 8 anos</label
+							>
+						</div>
+					</div>
+					<!-- Situação conjugal -->
+					<div class="box">
+						<h3>Situação conjugal</h3>
+						<div class="opts">
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="conjugal"
+									value="Casado/União"
+								/>
+								Casado ou união consensual</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="conjugal"
+									value="Desquitado"
+								/>
+								Desquitado/ separado judic/</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="conjugal"
+									value="Divorciado"
+								/>
+								Divorciado</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="conjugal"
+									value="Viúvo"
+								/>
+								Viúvo</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="conjugal"
+									value="Solteiro"
+								/>
+								Solteiro</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="conjugal"
+									value="Separado"
+								/>
+								Separado</label
+							>
+						</div>
+					</div>
+					<!-- Ocupação -->
+					<div class="box">
+						<h3>Ocupação</h3>
+						<div class="opts">
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="ocupacao"
+									value="Aposentado com outra"
+								/>
+								Aposentado com outra ocupação</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="ocupacao"
+									value="Aposentado sem outra"
+								/>
+								Aposentado sem outra ocupação</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="ocupacao"
+									value="Trabalhos domésticos"
+								/>
+								Trabalhos domésticos</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="ocupacao"
+									value="Fora do domicílio"
+								/>
+								Trabalho fora do domicílio</label
+							>
+						</div>
+					</div>
+					<!-- Renda -->
+					<div class="box">
+						<h3>Renda</h3>
+						<div class="opts">
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="renda"
+									value="Aposentadoria"
+								/>
+								Aposentadoria</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="renda"
+									value="Pensão"
+								/>
+								Pensão</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="renda"
+									value="Mesada"
+								/>
+								Mesada dos filhos</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="renda"
+									value="Aluguel"
+								/>
+								Aluguel</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="renda"
+									value="Trabalho"
+								/>
+								Trabalho</label
+							>
+							<div class="other-row">
+								<label class="cb"
+									><input
+										type="checkbox"
+										name="renda"
+										value="Outras"
+									/>
+									Outras</label
+								>
+								<input
+									type="text"
+									name="renda_outras"
+									placeholder="Especifique"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<!-- Local de residência -->
+					<div class="box">
+						<h3>Local de residência</h3>
+						<div class="opts">
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="local"
+									value="Casa térrea"
+								/>
+								Casa térrea</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="local"
+									value="Casa duplex"
+								/>
+								Casa duplex</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="local"
+									value="Apartamento"
+								/>
+								Apartamento</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="local"
+									value="ILP"
+								/>
+								ILP</label
+							>
+							<div class="other-row">
+								<label class="cb"
+									><input
+										type="checkbox"
+										name="local"
+										value="Outros"
+									/>
+									Outros</label
+								>
+								<input
+									type="text"
+									name="local_outros"
+									placeholder="Especifique"
+								/>
+							</div>
+						</div>
+					</div>
+					<!-- Residência -->
+					<div class="box">
+						<h3>Residência</h3>
+						<div class="opts">
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="residencia"
+									value="Sozinho"
+								/>
+								Sozinho</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="residencia"
+									value="Filhos"
+								/>
+								Filhos</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="residencia"
+									value="Outros familiares"
+								/>
+								Outros familiares</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="residencia"
+									value="Empregada"
+								/>
+								Empregada doméstica</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="residencia"
+									value="Cuidadores"
+								/>
+								Cuidadores</label
+							>
+							<div class="other-row">
+								<label class="cb"
+									><input
+										type="checkbox"
+										name="residencia"
+										value="Outros"
+									/>
+									Outros</label
+								>
+								<input
+									type="text"
+									name="residencia_outros"
+									placeholder="Especifique"
+								/>
+							</div>
+						</div>
+					</div>
+					<!-- Religião -->
+					<div class="box">
+						<h3>Religião</h3>
+						<div class="opts">
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="religiao"
+									value="Católica"
+								/>
+								Católica</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="religiao"
+									value="Evangélica"
+								/>
+								Evangélica</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="religiao"
+									value="Espírita"
+								/>
+								Espírita</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="religiao"
+									value="Budista"
+								/>
+								Budista</label
+							>
+							<div class="other-row">
+								<label class="cb"
+									><input
+										type="checkbox"
+										name="religiao"
+										value="Outra"
+									/>
+									Outra</label
+								>
+								<input
+									type="text"
+									name="religiao_outra"
+									placeholder="Especifique"
+								/>
+							</div>
+						</div>
+					</div>
+					<!-- Atividades sociais -->
+					<div class="box atv">
+						<h3>Atividades sociais</h3>
+						<div class="yn">
+							<label class="rd"
+								><input
+									type="radio"
+									name="atv_social"
+									value="Sim"
+								/>
+								Sim</label
+							>
+							<label class="rd"
+								><input
+									type="radio"
+									name="atv_social"
+									value="Não"
+								/>
+								Não</label
+							>
+						</div>
+						<div class="lbl">Quais?</div>
+						<textarea
+							name="atv_social_desc"
+							rows="3"
+							style="width: 100%; max-width: 100%"
+							placeholder="Descreva as atividades sociais"
+						></textarea>
+					</div>
+				</div>
+
+				<!-- INVENTÁRIO -->
+				<div class="sec-title">
+					Inventário de doenças prévias e medicamentos referenciais
+				</div>
+				<table class="inv">
+					<colgroup>
+						<col style="width: 22%" />
+						<col style="width: 28%" />
+						<col style="width: 25%" />
+						<col style="width: 25%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>Doença(s)</th>
+							<th>Medicamento(s)</th>
+							<th>Como usa?</th>
+							<th>Tempo de uso</th>
+						</tr>
+					</thead>
+					<tbody id="invBody"></tbody>
+				</table>
+
+				<!-- DIMENSÃO CLÍNICA -->
+				<div class="sec-title">Dimensão Clínica</div>
+				<div class="clin">
+					<!-- Linha 1: 4 colunas -->
+					<div class="crow cols-4">
+						<div class="cbox">
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="visao"
+									value="normal"
+								/>
+								Visão normal</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="visao"
+									value="deficit"
+								/>
+								Déficit visual</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="visao"
+									value="corretores"
+								/>
+								Usa corretores</label
+							>
+						</div>
+						<div class="cbox">
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="audicao"
+									value="normal"
+								/>
+								Audição normal</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="audicao"
+									value="deficit"
+								/>
+								Déficit auditivo</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="audicao"
+									value="corretores"
+								/>
+								Usa corretores</label
+							>
+						</div>
+						<div class="cbox">
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="cont_fecal"
+									value="normal"
+								/>
+								Continência fecal</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="cont_fecal"
+									value="incont"
+								/>
+								Incontinência fecal</label
+							>
+							<div class="field-row">
+								<span class="k">Tempo:</span
+								><input type="text" name="cont_fecal_tempo" />
+							</div>
+							<label class="cb" style="margin-top: 4px"
+								><input
+									type="checkbox"
+									name="cont_urin"
+									value="normal"
+								/>
+								Continência urinária</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="cont_urin"
+									value="incont"
+								/>
+								Incontinência urinária</label
+							>
+							<div class="field-row">
+								<span class="k">Tempo:</span
+								><input type="text" name="cont_urin_tempo" />
+							</div>
+						</div>
+						<div class="cbox">
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="sono"
+									value="normal"
+								/>
+								Sono normal</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="sono"
+									value="disturbio"
+								/>
+								Distúrbio do sono</label
+							>
+							<div class="field-row">
+								<span class="k">Qual?</span
+								><input type="text" name="sono_qual" />
+							</div>
+						</div>
+					</div>
+
+					<!-- Linha 2: 2 colunas -->
+					<div class="crow cols-2">
+						<div class="cbox">
+							<div class="row-rd">
+								<span class="k">Doenças cardiovasculares:</span>
+								<label class="rd"
+									><input
+										type="radio"
+										name="cardio"
+										value="Sim"
+									/>
+									Sim</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="cardio"
+										value="Não"
+									/>
+									Não</label
+								>
+							</div>
+							<div class="row-rd">
+								<span class="k">Doenças osteoarticulares:</span>
+								<label class="rd"
+									><input
+										type="radio"
+										name="osteo"
+										value="Sim"
+									/>
+									Sim</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="osteo"
+										value="Não"
+									/>
+									Não</label
+								>
+							</div>
+						</div>
+						<div class="cbox">
+							<div class="field-row">
+								<span class="k" style="min-width: 110px"
+									>Uso de órteses:</span
+								><input type="text" name="orteses" />
+							</div>
+							<div class="field-row" style="margin-top: 6px">
+								<span class="k" style="min-width: 110px"
+									>Uso de próteses:</span
+								><input type="text" name="proteses" />
+							</div>
+						</div>
+					</div>
+
+					<!-- Linha 3: 3 colunas -->
+					<div class="crow cols-3">
+						<div class="cbox">
+							<h4>Situação vacinal</h4>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="vacina"
+									value="Influenza"
+								/>
+								Influenza</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="vacina"
+									value="Pneumococo"
+								/>
+								Pneumococo</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="vacina"
+									value="Tétano"
+								/>
+								Tétano</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="vacina"
+									value="Hepatite B"
+								/>
+								Hepatite B</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="vacina"
+									value="Febre amarela"
+								/>
+								Febre amarela</label
+							>
+						</div>
+						<div class="cbox">
+							<h4>Data da última vacina</h4>
+							<div class="field-row">
+								<span class="k">Influenza:</span
+								><input type="text" name="vac_inf_data" />
+							</div>
+							<div class="field-row" style="margin-top: 4px">
+								<span class="k">Tétano:</span
+								><input type="text" name="vac_tet_data" />
+							</div>
+							<div class="field-row" style="margin-top: 4px">
+								<span class="k">Pneumococo:</span
+								><input type="text" name="vac_pneu_data" />
+							</div>
+						</div>
+						<div class="cbox">
+							<div class="row-rd">
+								<span class="k"
+									>Quedas nos últimos 12 meses?</span
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="quedas"
+										value="Sim"
+									/>
+									Sim</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="quedas"
+										value="Não"
+									/>
+									Não</label
+								>
+							</div>
+							<div class="field-row" style="margin-top: 6px">
+								<span class="k">Quantas?</span
+								><input
+									type="text"
+									name="quedas_qtd"
+									class="short"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<!-- Linha 4: 4 colunas -->
+					<div class="crow cols-4">
+						<div class="cbox">
+							<h4>Polifarmácia</h4>
+							<div class="row-rd">
+								<label class="rd"
+									><input
+										type="radio"
+										name="polifarm"
+										value="Sim"
+									/>
+									Sim</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="polifarm"
+										value="Não"
+									/>
+									Não</label
+								>
+							</div>
+						</div>
+						<div class="cbox">
+							<h4>Tabagismo</h4>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="tabagismo"
+									value="Fumante"
+								/>
+								Fumante</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="tabagismo"
+									value="Não fumante"
+								/>
+								Não fumante</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="tabagismo"
+									value="Ex-fumante"
+								/>
+								Ex-fumante</label
+							>
+							<div class="field-row">
+								<span class="k">Parou há:</span
+								><input type="text" name="tab_tempo" />
+							</div>
+						</div>
+						<div class="cbox">
+							<h4>Álcool</h4>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="alcool"
+									value="Uso seguro"
+								/>
+								Uso seguro</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="alcool"
+									value="Uso nocivo"
+								/>
+								Uso nocivo</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="alcool"
+									value="Dependência"
+								/>
+								Dependência</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="alcool"
+									value="Não bebe"
+								/>
+								Não bebe</label
+							>
+							<div class="field-row">
+								<span class="k">Parou há:</span
+								><input type="text" name="alcool_tempo" />
+							</div>
+						</div>
+						<div class="cbox">
+							<h4>Atividade física</h4>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="atvfis"
+									value="Não faz"
+								/>
+								Não faz</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="atvfis"
+									value="Caminhadas"
+								/>
+								Caminhadas</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="atvfis"
+									value="Musculação"
+								/>
+								Musculação</label
+							>
+							<label class="cb"
+								><input
+									type="checkbox"
+									name="atvfis"
+									value="Hidroginástica"
+								/>
+								Hidroginástica</label
+							>
+							<div class="other-row" style="margin-top: 2px">
+								<label class="cb"
+									><input
+										type="checkbox"
+										name="atvfis"
+										value="Outras"
+									/>
+									Outras</label
+								>
+								<input
+									type="text"
+									name="atvfis_outras"
+									placeholder="Especifique"
+								/>
+							</div>
+							<div class="field-row" style="margin-top: 4px">
+								<span class="k">Vezes/semana:</span
+								><input
+									type="text"
+									name="atvfis_freq"
+									class="short"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- DIMENSÃO FUNCIONAL -->
+				<div class="sec-title">Dimensão Funcional</div>
+				<table class="func">
+					<colgroup>
+						<col class="c1" />
+						<col class="c2" />
+						<col class="c3" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>Dimensão avaliada</th>
+							<th>Escores do paciente</th>
+							<th>Interpretação</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="subhead">
+							<td colspan="3">Estado Funcional</td>
+						</tr>
+
+						<tr>
+							<td class="dim">Equilíbrio e mobilidade</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="eq_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="eq_int"
+										value="baixo"
+									/>
+									Risco baixo de quedas</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="eq_int"
+										value="aumentado"
+									/>
+									Risco aumentado de quedas</label
+								>
+							</td>
+						</tr>
+						<tr>
+							<td class="dim">
+								"Teste do levantar e andar" – GUG
+							</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="gug_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="gug_int"
+										value="normal"
+									/>
+									Normal</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="gug_int"
+										value="leve"
+									/>
+									Anormalidade leve</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="gug_int"
+										value="media"
+									/>
+									Anormalidade média</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="gug_int"
+										value="moderada"
+									/>
+									Anormalidade moderada</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="gug_int"
+										value="grave"
+									/>
+									Anormalidade grave</label
+								>
+							</td>
+						</tr>
+						<tr>
+							<td class="dim">
+								Atividades básicas de vida diária (ABVDs)
+							</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="abvd_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="abvd_int"
+										value="indep"
+									/>
+									Independente</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="abvd_int"
+										value="dep"
+									/>
+									Dependente</label
+								>
+							</td>
+						</tr>
+						<tr>
+							<td class="dim">
+								Escala de Barthel para avaliação funcional
+							</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="barthel_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="barthel_int"
+										value="<20"
+									/>
+									&lt; 20 – Dependência total</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="barthel_int"
+										value="20-35"
+									/>
+									20 a 35 – Dependência grave</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="barthel_int"
+										value="40-55"
+									/>
+									40 a 55 – Dependência moderada</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="barthel_int"
+										value="60-95"
+									/>
+									60 a 95 – Dependência leve</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="barthel_int"
+										value="100"
+									/>
+									100 – Independente</label
+								>
+							</td>
+						</tr>
+						<tr>
+							<td class="dim">
+								Atividades instrumentais de vida diária (AIVDs)
+							</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="aivd_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="aivd_int"
+										value="indep"
+									/>
+									Independente</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="aivd_int"
+										value="dep"
+									/>
+									Dependente</label
+								>
+							</td>
+						</tr>
+						<tr>
+							<td class="dim">
+								Questionário de Pfeffer para atividades
+								funcionais
+							</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="pfeffer_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="pfeffer_int"
+										value="<6"
+									/>
+									&lt; 6 pontos – Normal</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="pfeffer_int"
+										value=">=6"
+									/>
+									≥ 6 pontos – Comprometido</label
+								>
+							</td>
+						</tr>
+
+						<tr class="subhead">
+							<td colspan="3">Cognição</td>
+						</tr>
+						<tr>
+							<td class="dim">Cognição</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="cog_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="cog_int"
+										value="normal"
+									/>
+									Normal</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="cog_int"
+										value="deficit"
+									/>
+									Déficit</label
+								>
+							</td>
+						</tr>
+						<tr>
+							<td class="dim">
+								Miniexame do estado mental (MEEM)
+							</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="meem_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="meem_int"
+										value="normal"
+									/>
+									Pontuação normal para escolaridade</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="meem_int"
+										value="alterada"
+									/>
+									Pontuação alterada para escolaridade</label
+								>
+							</td>
+						</tr>
+						<tr>
+							<td class="dim">
+								Fluência verbal (Categoria semântica)
+							</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="flu_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="flu_int"
+										value="normal"
+									/>
+									Pontuação normal para escolaridade</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="flu_int"
+										value="diminuida"
+									/>
+									Pontuação diminuída para escolaridade</label
+								>
+							</td>
+						</tr>
+						<tr>
+							<td class="dim">Teste do desenho do relógio</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="relogio_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="relogio_int"
+										value="normal"
+									/>
+									Pontuação normal</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="relogio_int"
+										value="comprometido"
+									/>
+									Comprometido</label
+								>
+							</td>
+						</tr>
+
+						<tr class="subhead">
+							<td colspan="3">Humor</td>
+						</tr>
+						<tr>
+							<td class="dim">Humor</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="humor_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="humor_int"
+										value="normal"
+									/>
+									Normal</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="humor_int"
+										value="alterado"
+									/>
+									Alterado</label
+								>
+							</td>
+						</tr>
+						<tr>
+							<td class="dim">
+								Escala de depressão geriátrica de Yesavage (15
+								itens)
+							</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="yesavage_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="yesavage_int"
+										value="<=5"
+									/>
+									≤ 5 pontos – Normal</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="yesavage_int"
+										value=">=7"
+									/>
+									≥ 7 pontos – Depressão</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="yesavage_int"
+										value=">=11"
+									/>
+									≥ 11 pontos – Depressão moderada a
+									grave</label
+								>
+							</td>
+						</tr>
+
+						<tr class="subhead">
+							<td colspan="3">Estado Nutricional</td>
+						</tr>
+						<tr>
+							<td class="dim">Estado nutricional</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="nut_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="nut_int"
+										value="ausencia"
+									/>
+									Ausência de risco nutricional</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="nut_int"
+										value="presenca"
+									/>
+									Presença de risco nutricional</label
+								>
+							</td>
+						</tr>
+						<tr>
+							<td class="dim">
+								Miniavaliação nutricional de Guigóz (MAN)
+							</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="man_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="man_int"
+										value="<17"
+									/>
+									&lt; 17 pontos – Desnutrido</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="man_int"
+										value="17-23.5"
+									/>
+									17 a 23,5 pontos – Risco de
+									desnutrição</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="man_int"
+										value=">=24"
+									/>
+									≥ 24 pontos – Nutrido</label
+								>
+							</td>
+						</tr>
+
+						<tr class="subhead">
+							<td colspan="3">Suporte Social</td>
+						</tr>
+						<tr>
+							<td class="dim">Suporte social</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="sup_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="sup_int"
+										value="adequado"
+									/>
+									Adequado</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="sup_int"
+										value="nao"
+									/>
+									Não adequado</label
+								>
+							</td>
+						</tr>
+						<tr>
+							<td class="dim">Apgar da família e dos amigos</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="apgar_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="apgar_int"
+										value="<3"
+									/>
+									&lt; 3 pontos – Acentuada disfunção</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="apgar_int"
+										value="4-6"
+									/>
+									4–6 pontos – Moderada disfunção</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="apgar_int"
+										value=">6"
+									/>
+									&gt; 6 pontos – Leve disfunção</label
+								>
+							</td>
+						</tr>
+						<tr>
+							<td class="dim">Cuidador</td>
+							<td class="scores">
+								<div class="si">
+									<input type="text" name="cuid_score" />
+								</div>
+							</td>
+							<td class="interp">
+								<label class="rd"
+									><input
+										type="radio"
+										name="cuid_int"
+										value="formal"
+									/>
+									Formal</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="cuid_int"
+										value="inf-fam"
+									/>
+									Informal (familiar)</label
+								>
+								<label class="rd"
+									><input
+										type="radio"
+										name="cuid_int"
+										value="inf-out"
+									/>
+									Informal (amigos/outros)</label
+								>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- OUTRAS AVALIAÇÕES -->
+				<div class="block">
+					<h3>Outras avaliações</h3>
+					<textarea
+						name="outras_aval"
+						placeholder="Registre outras avaliações relevantes..."
+					></textarea>
+				</div>
+
+				<!-- OBSERVAÇÕES -->
+				<div class="block obs">
+					<h3>Observações</h3>
+					<textarea
+						name="observacoes"
+						placeholder="Observações gerais..."
+					></textarea>
+				</div>
+
+				<!-- AVALIAÇÃO FINAL -->
+				<div class="sec-title">Avaliação Final</div>
+				<div class="block" style="margin-top: 0">
+					<div class="final-grid">
+						<div class="pair">
+							<label class="rd"
+								><input
+									type="radio"
+									name="f_indep"
+									value="indep"
+								/>
+								Independente</label
+							>
+							<label class="rd"
+								><input
+									type="radio"
+									name="f_indep"
+									value="dep"
+								/>
+								Dependente</label
+							>
+						</div>
+						<div class="pair">
+							<label class="rd"
+								><input
+									type="radio"
+									name="f_fragil"
+									value="fragil"
+								/>
+								Idoso frágil</label
+							>
+							<label class="rd"
+								><input
+									type="radio"
+									name="f_fragil"
+									value="nao-fragil"
+								/>
+								Idoso não frágil</label
+							>
+						</div>
+						<div class="pair">
+							<label class="rd"
+								><input
+									type="radio"
+									name="f_quedas"
+									value="baixo"
+								/>
+								Baixo risco de quedas</label
+							>
+							<label class="rd"
+								><input
+									type="radio"
+									name="f_quedas"
+									value="alto"
+								/>
+								Alto risco de quedas</label
+							>
+						</div>
+						<div class="pair">
+							<label class="rd"
+								><input
+									type="radio"
+									name="f_cog"
+									value="deficit"
+								/>
+								Déficit cognitivo</label
+							>
+							<label class="rd"
+								><input type="radio" name="f_cog" value="sem" />
+								Sem déficit cognitivo</label
+							>
+						</div>
+						<div class="pair">
+							<label class="rd"
+								><input type="radio" name="f_nut" value="sem" />
+								Sem risco nutricional</label
+							>
+							<label class="rd"
+								><input
+									type="radio"
+									name="f_nut"
+									value="risco"
+								/>
+								Risco nutricional</label
+							>
+						</div>
+						<div class="pair">
+							<label class="rd"
+								><input
+									type="radio"
+									name="f_sup"
+									value="adequado"
+								/>
+								Suporte social adequado</label
+							>
+							<label class="rd"
+								><input
+									type="radio"
+									name="f_sup"
+									value="inadequado"
+								/>
+								Suporte social inadequado</label
+							>
+						</div>
+					</div>
+
+					<div
+						class="final-meta"
+						style="margin-top: 14px; margin-bottom: 0"
+					>
+						<div class="fcell">
+							<label>Data</label>
+							<input type="date" name="final_data" />
+						</div>
+						<div class="fcell">
+							<label>Avaliador</label>
+							<input
+								type="text"
+								name="final_avaliador"
+								placeholder="Nome do avaliador"
+							/>
+						</div>
+						<div class="fcell">
+							<label>Assinatura / Carimbo</label>
+							<div class="sign-box">assinatura ou carimbo</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="foot">
+					<button type="button" class="btn" id="btnClear2">
+						Limpar
+					</button>
+					<button type="button" class="btn primary" id="btnSave2">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M5 4h11l3 3v13H5z" />
+							<path d="M8 4v5h7V4" />
+							<path d="M8 14h8v6H8z" />
+						</svg>
+						Salvar avaliação
+					</button>
+				</div>
+			</form>
+		</main>
+
+		<div class="toast" id="toast">
+			Avaliação capturada — confira o console
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>
