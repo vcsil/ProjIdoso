@@ -280,6 +280,8 @@ function mapToDatabasePayload(raw) {
 		final_cognicao: raw.f_cog === "deficit" ? "deficit" : raw.f_cog === "sem" ? "sem_deficit" : null,
 		final_nutricao: raw.f_nut === "sem" ? "sem_risco" : raw.f_nut === "risco" ? "risco" : null,
 		final_suporte_social: toNull(raw.f_sup),
+		final_local: toNull(raw.final_local),
+		final_preenchedor: toNull(raw.final_preenchedor),
 		raw_payload: raw,
 	};
 

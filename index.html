@@ -1659,6 +1659,11 @@
 						<div class="fcell">
 							<label>Data</label>
 							<input type="date" name="final_data" />
+							<div class="row-rd" style="margin-top: 8px">
+								<span class="k">Local:</span>
+								<label class="rd"><input type="radio" name="final_local" value="mooca" /> MOOCA</label>
+								<label class="rd"><input type="radio" name="final_local" value="abrigo" /> ABRIGO</label>
+							</div>
 						</div>
 						<div class="fcell">
 							<label>Avaliador</label>
@@ -1669,8 +1674,12 @@
 							/>
 						</div>
 						<div class="fcell">
-							<label>Assinatura / Carimbo</label>
-							<div class="sign-box">assinatura ou carimbo</div>
+							<label>Preenchedor</label>
+							<input
+								type="text"
+								name="final_preenchedor"
+								placeholder="Nome do preenchedor"
+							/>
 						</div>
 					</div>
 				</div>
