@@ -312,11 +312,7 @@
 								Apartamento</label
 							>
 							<label class="rd"
-								><input
-									type="radio"
-									name="local"
-									value="ILP"
-								/>
+								><input type="radio" name="local" value="ILP" />
 								ILP</label
 							>
 							<div class="other-row">
@@ -1536,7 +1532,11 @@
 				</div>
 
 				<div class="block obs">
-					<h3>Quando você pensa em saúde e cidadania na melhor idade, quais são as cinco primeiras-palavras ou expressões que vêm à sua mente?</h3>
+					<h3>
+						Quando você pensa em saúde e cidadania na melhor idade,
+						quais são as cinco primeiras-palavras ou expressões que
+						vêm à sua mente?
+					</h3>
 					<textarea
 						name="representacao_saude_cidadania_propria"
 						placeholder="Digite até cinco palavras ou expressões..."
@@ -1544,7 +1544,11 @@
 				</div>
 
 				<div class="block obs">
-					<h3>Na sua opinião, o que os outros idosos pensam sobre a saúde e a cidadania na melhor idade? Diga cinco palavras ou expressões.</h3>
+					<h3>
+						Na sua opinião, o que os outros idosos pensam sobre a
+						saúde e a cidadania na melhor idade? Diga cinco palavras
+						ou expressões.
+					</h3>
 					<textarea
 						name="representacao_saude_cidadania_outros"
 						placeholder="Digite até cinco palavras ou expressões..."
@@ -1664,27 +1668,6 @@
 						<div class="fcell">
 							<label>Data</label>
 							<input type="date" name="final_data" />
-							<div class="row-rd" style="margin-top: 8px">
-								<label for="identificador_paciente" class="k">Identificador do Paciente:</label>
-								<input
-									type="text"
-									name="identificador_paciente"
-									id="identificador_paciente"
-									class="identificador-paciente"
-									required
-								/>
-								<span class="k">Local:</span>
-								<label class="rd"><input type="radio" name="final_local" value="mooca" checked /> MOOCA</label>
-								<label class="rd"><input type="radio" name="final_local" value="abrigo" /> ABRIGO</label>
-								<label for="identificador_paciente" class="k">Identificador do Paciente:</label>
-								<input
-									type="text"
-									name="identificador_paciente"
-									id="identificador_paciente"
-									class="identificador-paciente"
-									required
-								/>
-							</div>
 						</div>
 						<div class="fcell">
 							<label>Avaliador</label>
@@ -1701,6 +1684,39 @@
 								name="final_preenchedor"
 								id="final_preenchedor"
 								placeholder="Nome do preenchedor"
+							/>
+						</div>
+						<div class="fcell">
+							<label>Local</label>
+							<div class="row-rd" style="margin-top: 8px">
+								<label class="rd">
+									<input
+										type="radio"
+										name="final_local"
+										value="mooca"
+										checked
+									/>
+									MOOCA
+								</label>
+								<label class="rd">
+									<input
+										type="radio"
+										name="final_local"
+										value="abrigo"
+									/>
+									ABRIGO
+								</label>
+							</div>
+						</div>
+						<div class="fcell">
+							<label>Identificador do Paciente:</label>
+							<input
+								type="text"
+								name="identificador_paciente"
+								id="identificador_paciente"
+								class="identificador-paciente"
+								placeholder="Ex: M21"
+								required
 							/>
 						</div>
 					</div>
