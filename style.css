@@ -518,6 +518,15 @@ table.func .interp label.rd {
 	letter-spacing: 0.05em;
 	margin-bottom: 4px;
 }
+.final-meta .row-rd {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: nowrap;
+}
+.final-meta .row-rd .k {
+	white-space: nowrap;
+}
 .sign-box {
 	border: 1px dashed var(--line-strong);
 	height: 62px;
