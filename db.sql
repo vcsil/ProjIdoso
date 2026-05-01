@@ -226,6 +226,8 @@ CREATE TABLE aga_avaliacoes (
 
     outras_avaliacoes TEXT,
     observacoes TEXT,
+    representacao_saude_cidadania_propria TEXT,
+    representacao_saude_cidadania_outros TEXT,
 
     final_funcionalidade TEXT CHECK (
         final_funcionalidade IN ('independente', 'dependente')
