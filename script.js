@@ -1,18 +1,33 @@
 // Build inventory rows
-(function () {
+let inventoryRowCount = 0;
+
+function addInventoryRow() {
 	const tb = document.getElementById("invBody");
-	for (let i = 0; i < 7; i++) {
-		const tr = document.createElement("tr");
-		["doenca", "medicamento", "como_usa", "tempo"].forEach((k) => {
-			const td = document.createElement("td");
-			const inp = document.createElement("input");
-			inp.type = "text";
-			inp.name = `inv_${k}_${i + 1}`;
-			td.appendChild(inp);
-			tr.appendChild(td);
-		});
-		tb.appendChild(tr);
-	}
+	if (!tb) return;
+
+	inventoryRowCount += 1;
+	const tr = document.createElement("tr");
+	[
+		["doenca", "inv_doenca"],
+		["medicamento", "inv_medicamento"],
+		["como_usa", "inv_como_usa"],
+		["tempo", "inv_tempo"],
+	].forEach(([, baseName]) => {
+		const td = document.createElement("td");
+		const inp = document.createElement("input");
+		inp.type = "text";
+		inp.name = `${baseName}_${inventoryRowCount}`;
+		td.appendChild(inp);
+		tr.appendChild(td);
+	});
+	tb.appendChild(tr);
+}
+
+(function initInventoryRows() {
+	for (let i = 0; i < 3; i++) addInventoryRow();
+	document
+		.getElementById("btnAddInventoryRow")
+		?.addEventListener("click", addInventoryRow);
 })();
 
 const SUPABASE_URL = window.ENV?.SUPABASE_URL;
@@ -94,7 +109,7 @@ function captureRawFormData() {
 	}
 
 	out.inventario = [];
-	for (let i = 1; i <= 7; i++) {
+	for (let i = 1; i <= inventoryRowCount; i++) {
 		out.inventario.push({
 			doenca: out[`inv_doenca_${i}`] || "",
 			medicamento: out[`inv_medicamento_${i}`] || "",
