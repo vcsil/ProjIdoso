@@ -272,6 +272,8 @@ function mapToDatabasePayload(raw) {
 		cuidador_tipo: raw.cuid_int === "formal" ? "formal" : raw.cuid_int === "inf-fam" ? "informal_familiar" : raw.cuid_int === "inf-out" ? "informal_amigos_outros" : null,
 		outras_avaliacoes: toNull(raw.outras_aval),
 		observacoes: toNull(raw.observacoes),
+		representacao_saude_cidadania_propria: toNull(raw.representacao_saude_cidadania_propria),
+		representacao_saude_cidadania_outros: toNull(raw.representacao_saude_cidadania_outros),
 		final_funcionalidade: raw.f_indep === "indep" ? "independente" : raw.f_indep === "dep" ? "dependente" : null,
 		final_fragilidade: raw.f_fragil === "fragil" ? "fragil" : raw.f_fragil === "nao-fragil" ? "nao_fragil" : null,
 		final_risco_quedas: toNull(raw.f_quedas),
