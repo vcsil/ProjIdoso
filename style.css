@@ -88,11 +88,23 @@ main {
 .title {
 	flex: 1;
 	text-align: center;
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	gap: 6px;
+	flex-wrap: wrap;
 	font-size: 22px;
 	font-weight: 600;
 	color: var(--ink);
 	letter-spacing: -0.01em;
 	padding: 0 12px;
+}
+
+.form-counter {
+	font-weight: 600;
+	color: var(--accent);
+	white-space: nowrap;
+	font-size: 0.9em;
 }
 .actions {
 	display: flex;
@@ -736,5 +748,15 @@ table.func .interp label.rd {
 	}
 	.brand-text {
 		display: none;
+	}
+}
+
+@media (max-width: 640px) {
+	.title {
+		font-size: 18px;
+		line-height: 1.3;
+	}
+	.form-counter {
+		font-size: 0.95em;
 	}
 }
