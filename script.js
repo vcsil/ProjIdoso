@@ -78,22 +78,10 @@ function captureRawFormData() {
 	const fd = new FormData(form);
 	const out = {};
 	const multi = [
-		"escolaridade",
-		"conjugal",
-		"ocupacao",
 		"renda",
-		"local",
 		"residencia",
-		"religiao",
 		"vacina",
-		"tabagismo",
-		"alcool",
 		"atvfis",
-		"visao",
-		"audicao",
-		"cont_fecal",
-		"cont_urin",
-		"sono",
 	];
 
 	for (const [k, v] of fd.entries()) {
@@ -136,9 +124,10 @@ function mapToDatabasePayload(raw) {
 		">8": "maior_8",
 	};
 
-	const singleMap = (arr, map) => {
-		if (!Array.isArray(arr) || arr.length === 0) return null;
-		return map[arr[0]] ?? null;
+	const singleMap = (value, map) => {
+		if (value === undefined || value === null || value === "") return null;
+		if (Array.isArray(value)) return value.length > 0 ? map[value[0]] ?? null : null;
+		return map[value] ?? null;
 	};
 
 	const paciente = {
@@ -200,15 +189,21 @@ function mapToDatabasePayload(raw) {
 		religiao_outra_texto: toNull(raw.religiao_outra),
 		atividades_sociais: toBooleanSimNao(raw.atv_social),
 		atividades_sociais_texto: toNull(raw.atv_social_desc),
-		visao_status: includesAny(raw.visao || [], ["normal"]) ? "normal" : includesAny(raw.visao || [], ["deficit"]) ? "deficit" : null,
-		visao_usa_corretores: includesAny(raw.visao || [], ["corretores"]),
-		audicao_status: includesAny(raw.audicao || [], ["normal"]) ? "normal" : includesAny(raw.audicao || [], ["deficit"]) ? "deficit" : null,
-		audicao_usa_corretores: includesAny(raw.audicao || [], ["corretores"]),
-		continencia_fecal_status: includesAny(raw.cont_fecal || [], ["normal"]) ? "continente" : includesAny(raw.cont_fecal || [], ["incont"]) ? "incontinente" : null,
+		visao_status: raw.visao_status === "normal" || raw.visao_status === "deficit" ? raw.visao_status : null,
+		visao_usa_corretores: raw.visao_usa_corretores === "true",
+		audicao_status: raw.audicao_status === "normal" || raw.audicao_status === "deficit" ? raw.audicao_status : null,
+		audicao_usa_corretores: raw.audicao_usa_corretores === "true",
+		continencia_fecal_status:
+			raw.continencia_fecal_status === "continente" || raw.continencia_fecal_status === "incontinente"
+				? raw.continencia_fecal_status
+				: null,
 		continencia_fecal_tempo: toNull(raw.cont_fecal_tempo),
-		continencia_urinaria_status: includesAny(raw.cont_urin || [], ["normal"]) ? "continente" : includesAny(raw.cont_urin || [], ["incont"]) ? "incontinente" : null,
+		continencia_urinaria_status:
+			raw.continencia_urinaria_status === "continente" || raw.continencia_urinaria_status === "incontinente"
+				? raw.continencia_urinaria_status
+				: null,
 		continencia_urinaria_tempo: toNull(raw.cont_urin_tempo),
-		sono_status: includesAny(raw.sono || [], ["normal"]) ? "normal" : includesAny(raw.sono || [], ["disturbio"]) ? "disturbio" : null,
+		sono_status: raw.sono_status === "normal" || raw.sono_status === "disturbio" ? raw.sono_status : null,
 		sono_qual: toNull(raw.sono_qual),
 		doenca_cardiovascular: toBooleanSimNao(raw.cardio),
 		doenca_osteoarticular: toBooleanSimNao(raw.osteo),
@@ -225,9 +220,9 @@ function mapToDatabasePayload(raw) {
 		quedas_ultimos_12_meses: toBooleanSimNao(raw.quedas),
 		quantidade_quedas: toNumberOrNull(raw.quedas_qtd),
 		polifarmacia: toBooleanSimNao(raw.polifarm),
-		tabagismo_status: singleMap(raw.tabagismo, { Fumante: "fumante", "Não fumante": "nao_fumante", "Ex-fumante": "ex_fumante" }),
+		tabagismo_status: singleMap(raw.tabagismo, { fumante: "fumante", nao_fumante: "nao_fumante", ex_fumante: "ex_fumante" }),
 		tabagismo_tempo_parou: toNull(raw.tab_tempo),
-		alcool_status: singleMap(raw.alcool, { "Uso seguro": "uso_seguro", "Uso nocivo": "uso_nocivo", Dependência: "dependencia", "Não bebe": "nao_bebe" }),
+		alcool_status: singleMap(raw.alcool, { uso_seguro: "uso_seguro", uso_nocivo: "uso_nocivo", dependencia: "dependencia", nao_bebe: "nao_bebe" }),
 		alcool_tempo_parou: toNull(raw.alcool_tempo),
 		atividade_fisica_nao_faz: includesAny(raw.atvfis || [], ["Não faz"]),
 		atividade_fisica_caminhadas: includesAny(raw.atvfis || [], ["Caminhadas"]),
