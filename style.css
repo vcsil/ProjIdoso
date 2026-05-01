@@ -273,7 +273,8 @@ label.rd input {
 	padding-left: 19px; /* indent the field under the checkbox label */
 	box-sizing: border-box;
 }
-.other-row label.cb {
+.other-row label.cb,
+.other-row label.rd {
 	flex: 0 0 auto;
 	margin-left: -19px;
 } /* checkbox aligns with siblings above */
