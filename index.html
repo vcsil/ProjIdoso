@@ -1665,8 +1665,16 @@
 							<label>Data</label>
 							<input type="date" name="final_data" />
 							<div class="row-rd" style="margin-top: 8px">
+								<label for="identificador_paciente" class="k">Identificador do Paciente:</label>
+								<input
+									type="text"
+									name="identificador_paciente"
+									id="identificador_paciente"
+									class="identificador-paciente"
+									required
+								/>
 								<span class="k">Local:</span>
-								<label class="rd"><input type="radio" name="final_local" value="mooca" /> MOOCA</label>
+								<label class="rd"><input type="radio" name="final_local" value="mooca" checked /> MOOCA</label>
 								<label class="rd"><input type="radio" name="final_local" value="abrigo" /> ABRIGO</label>
 							</div>
 						</div>
@@ -1683,6 +1691,7 @@
 							<input
 								type="text"
 								name="final_preenchedor"
+								id="final_preenchedor"
 								placeholder="Nome do preenchedor"
 							/>
 						</div>

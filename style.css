@@ -164,6 +164,9 @@ input.short {
 input.tiny {
 	width: 60px;
 }
+input.identificador-paciente {
+	width: 80px;
+}
 textarea {
 	min-height: 64px;
 	resize: vertical;

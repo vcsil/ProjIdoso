@@ -247,6 +247,7 @@ CREATE TABLE aga_avaliacoes (
     final_suporte_social TEXT CHECK (
         final_suporte_social IN ('adequado', 'inadequado')
     ),
+    identificador_paciente TEXT,
     final_local TEXT CHECK (
         final_local IN ('mooca', 'abrigo')
     ),
