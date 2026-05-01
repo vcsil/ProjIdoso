@@ -269,6 +269,6 @@ CREATE TABLE aga_medicamentos (
 
     created_at TIMESTAMP DEFAULT now(),
 
-    CONSTRAINT aga_medicamentos_ordem_check CHECK (ordem BETWEEN 1 AND 7),
+    CONSTRAINT aga_medicamentos_ordem_check CHECK (ordem >= 1),
     CONSTRAINT aga_medicamentos_avaliacao_ordem_unique UNIQUE (avaliacao_id, ordem)
 );
