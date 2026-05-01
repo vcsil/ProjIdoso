@@ -33,11 +33,39 @@ function addInventoryRow() {
 const SUPABASE_URL = window.ENV?.SUPABASE_URL;
 const SUPABASE_ANON_KEY = window.ENV?.SUPABASE_ANON_KEY;
 const FINAL_PREENCHEDOR_STORAGE_KEY = "aga_final_preenchedor";
+const TOTAL_AVALIACOES_ESPERADO = 87;
 
 const supabaseClient =
 	SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase
 		? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 		: null;
+
+
+function updateFormCounter(count) {
+	const counter = document.getElementById("formCounter");
+	if (!counter) return;
+	const parsedCount = Number(count);
+	const safeCount = Number.isFinite(parsedCount) ? parsedCount : 0;
+	counter.textContent = `- [${safeCount}]/${TOTAL_AVALIACOES_ESPERADO}`;
+}
+
+async function loadFormCounter() {
+	if (!supabaseClient) {
+		updateFormCounter(0);
+		return;
+	}
+
+	const { data, error } = await supabaseClient.rpc("contar_avaliacoes_aga");
+
+	if (error) {
+		console.error("Erro ao carregar contador de avaliações:", error);
+		const counter = document.getElementById("formCounter");
+		if (counter) counter.textContent = `- [--]/${TOTAL_AVALIACOES_ESPERADO}`;
+		return;
+	}
+
+	updateFormCounter(data);
+}
 
 // Toast
 const toast = document.getElementById("toast");
@@ -339,6 +367,7 @@ async function saveEvaluation() {
 		}
 
 		showToast("Avaliação salva com sucesso");
+		await loadFormCounter();
 	} catch (error) {
 		console.error("Erro ao salvar avaliação:", error);
 		showToast("Erro ao salvar avaliação");
@@ -376,3 +405,4 @@ document.getElementById("btnClear")?.addEventListener("click", clearAll);
 document.getElementById("btnClear2")?.addEventListener("click", clearAll);
 loadSavedPreenchedor();
 bindPreenchedorStorage();
+loadFormCounter();
