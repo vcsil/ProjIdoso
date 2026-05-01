@@ -32,6 +32,7 @@ function addInventoryRow() {
 
 const SUPABASE_URL = window.ENV?.SUPABASE_URL;
 const SUPABASE_ANON_KEY = window.ENV?.SUPABASE_ANON_KEY;
+const FINAL_PREENCHEDOR_STORAGE_KEY = "aga_final_preenchedor";
 
 const supabaseClient =
 	SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase
@@ -290,6 +291,7 @@ function mapToDatabasePayload(raw) {
 		final_cognicao: raw.f_cog === "deficit" ? "deficit" : raw.f_cog === "sem" ? "sem_deficit" : null,
 		final_nutricao: raw.f_nut === "sem" ? "sem_risco" : raw.f_nut === "risco" ? "risco" : null,
 		final_suporte_social: toNull(raw.f_sup),
+		identificador_paciente: toNull(raw.identificador_paciente),
 		final_local: toNull(raw.final_local),
 		final_preenchedor: toNull(raw.final_preenchedor),
 		raw_payload: raw,
@@ -318,6 +320,11 @@ async function saveEvaluation() {
 		}
 
 		const raw = captureRawFormData();
+		if (!toNull(raw.identificador_paciente)) {
+			showToast("Informe o identificador do paciente antes de salvar");
+			document.getElementById("identificador_paciente")?.focus();
+			return;
+		}
 		const payload = mapToDatabasePayload(raw);
 
 		const { error: pacienteError } = await supabaseClient.from("pacientes").insert([payload.paciente]);
@@ -341,10 +348,31 @@ async function saveEvaluation() {
 function clearAll() {
 	if (!confirm("Limpar todos os campos da avaliação?")) return;
 	document.getElementById("agaForm").reset();
+	document.querySelector('input[name="final_local"][value="mooca"]')?.click();
+	loadSavedPreenchedor();
 	showToast("Formulário limpo");
+}
+
+function loadSavedPreenchedor() {
+	const preenchedorInput = document.getElementById("final_preenchedor");
+	if (!preenchedorInput) return;
+	const savedValue = localStorage.getItem(FINAL_PREENCHEDOR_STORAGE_KEY);
+	if (savedValue) {
+		preenchedorInput.value = savedValue;
+	}
+}
+
+function bindPreenchedorStorage() {
+	const preenchedorInput = document.getElementById("final_preenchedor");
+	if (!preenchedorInput) return;
+	preenchedorInput.addEventListener("input", (event) => {
+		localStorage.setItem(FINAL_PREENCHEDOR_STORAGE_KEY, event.target.value || "");
+	});
 }
 
 document.getElementById("btnSave")?.addEventListener("click", saveEvaluation);
 document.getElementById("btnSave2")?.addEventListener("click", saveEvaluation);
 document.getElementById("btnClear")?.addEventListener("click", clearAll);
 document.getElementById("btnClear2")?.addEventListener("click", clearAll);
+loadSavedPreenchedor();
+bindPreenchedorStorage();
