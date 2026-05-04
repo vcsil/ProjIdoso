@@ -34,6 +34,7 @@ const SUPABASE_URL = window.ENV?.SUPABASE_URL;
 const SUPABASE_ANON_KEY = window.ENV?.SUPABASE_ANON_KEY;
 const FINAL_PREENCHEDOR_STORAGE_KEY = "aga_final_preenchedor";
 const TOTAL_AVALIACOES_ESPERADO = 87;
+let isSaving = false;
 
 const supabaseClient =
 	SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase
@@ -74,6 +75,45 @@ function showToast(msg) {
 	toast.classList.add("show");
 	clearTimeout(showToast._t);
 	showToast._t = setTimeout(() => toast.classList.remove("show"), 2400);
+}
+
+
+function showLoadingOverlay() {
+	document.getElementById("loadingOverlay")?.removeAttribute("hidden");
+}
+
+function hideLoadingOverlay() {
+	document.getElementById("loadingOverlay")?.setAttribute("hidden", "");
+}
+
+function setSavingState(saving) {
+	isSaving = saving;
+	const saveButtons = [document.getElementById("btnSave"), document.getElementById("btnSave2")].filter(Boolean);
+	saveButtons.forEach((button) => {
+		button.disabled = saving;
+		button.classList.toggle("btn-loading", saving);
+
+		const desktopLabel = button.querySelector(".label-desktop");
+		const mobileLabel = button.querySelector(".label-mobile");
+		if (desktopLabel) {
+			if (!desktopLabel.dataset.originalText) desktopLabel.dataset.originalText = desktopLabel.textContent;
+			desktopLabel.textContent = saving ? "Salvando..." : desktopLabel.dataset.originalText;
+		}
+		if (mobileLabel) {
+			if (!mobileLabel.dataset.originalText) mobileLabel.dataset.originalText = mobileLabel.textContent;
+			mobileLabel.textContent = saving ? "Salvando..." : mobileLabel.dataset.originalText;
+		}
+		if (!desktopLabel && !mobileLabel) {
+			if (!button.dataset.originalText) button.dataset.originalText = button.textContent.trim();
+			button.textContent = saving ? "Salvando..." : button.dataset.originalText;
+		}
+	});
+
+	if (saving) {
+		showLoadingOverlay();
+	} else {
+		hideLoadingOverlay();
+	}
 }
 
 function generateUUID() {
@@ -341,18 +381,22 @@ function mapToDatabasePayload(raw) {
 }
 
 async function saveEvaluation() {
-	try {
-		if (!SUPABASE_URL || !SUPABASE_ANON_KEY || !supabaseClient) {
-			showToast("Erro: configure SUPABASE_URL e SUPABASE_ANON_KEY no env.js");
-			return;
-		}
+	if (!SUPABASE_URL || !SUPABASE_ANON_KEY || !supabaseClient) {
+		showToast("Erro: configure SUPABASE_URL e SUPABASE_ANON_KEY no env.js");
+		return;
+	}
 
-		const raw = captureRawFormData();
-		if (!toNull(raw.identificador_paciente)) {
-			showToast("Informe o identificador do paciente antes de salvar");
-			document.getElementById("identificador_paciente")?.focus();
-			return;
-		}
+	const raw = captureRawFormData();
+	if (!toNull(raw.identificador_paciente)) {
+		showToast("Informe o identificador do paciente antes de salvar");
+		document.getElementById("identificador_paciente")?.focus();
+		return;
+	}
+
+	if (isSaving) return;
+
+	try {
+		setSavingState(true);
 		const payload = mapToDatabasePayload(raw);
 
 		const { error: pacienteError } = await supabaseClient.from("pacientes").insert([payload.paciente]);
@@ -371,6 +415,8 @@ async function saveEvaluation() {
 	} catch (error) {
 		console.error("Erro ao salvar avaliação:", error);
 		showToast("Erro ao salvar avaliação");
+	} finally {
+		setSavingState(false);
 	}
 }
 
