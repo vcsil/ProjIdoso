@@ -23,6 +23,14 @@ function addInventoryRow() {
 	tb.appendChild(tr);
 }
 
+function resetInventoryRows() {
+	const tb = document.getElementById("invBody");
+	if (!tb) return;
+	tb.innerHTML = "";
+	inventoryRowCount = 0;
+	for (let i = 0; i < 3; i++) addInventoryRow();
+}
+
 (function initInventoryRows() {
 	for (let i = 0; i < 3; i++) addInventoryRow();
 	document
@@ -412,6 +420,7 @@ async function saveEvaluation() {
 
 		showToast("Avaliação salva com sucesso");
 		await loadFormCounter();
+		resetFormAfterSuccessfulSave();
 	} catch (error) {
 		console.error("Erro ao salvar avaliação:", error);
 		showToast("Erro ao salvar avaliação");
@@ -420,11 +429,23 @@ async function saveEvaluation() {
 	}
 }
 
+function resetFormAfterSuccessfulSave() {
+	document.getElementById("agaForm")?.reset();
+	document.querySelector('input[name="final_local"][value="mooca"]')?.click();
+	loadSavedPreenchedor();
+	resetInventoryRows();
+	window.scrollTo({
+		top: 0,
+		behavior: "smooth",
+	});
+}
+
 function clearAll() {
 	if (!confirm("Limpar todos os campos da avaliação?")) return;
 	document.getElementById("agaForm").reset();
 	document.querySelector('input[name="final_local"][value="mooca"]')?.click();
 	loadSavedPreenchedor();
+	resetInventoryRows();
 	showToast("Formulário limpo");
 }
 
